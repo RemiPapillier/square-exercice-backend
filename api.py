@@ -52,7 +52,10 @@ def occupancy():
     for row in PeopleCounters.query.filter(PeopleCounters.sensor==sensor, PeopleCounters.ts<=atInstant):
         peopleIn += row.into
         peopleOut += row.out
-    return make_response({'inside': peopleIn-peopleOut}, 200)
+    if(peopleIn==0 and peopleOut==0):
+        return make_response({'inside': False}, 200)
+    else:
+        return make_response({'inside': peopleIn-peopleOut}, 200)
 
 if __name__ == '__main__':
     app.run(debug=True)

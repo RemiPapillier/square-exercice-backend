@@ -33,9 +33,14 @@ class FlaskTest(unittest.TestCase):
         self.assertEqual(r.status_code, 201)
 
     #GET request to /api/occupancy to get the occupancy on specific sensor and date
-    def test_3_get_occupancy(self):
+    def test_3_get_occupancy_number(self):
         r = requests.get(FlaskTest.OCCUPANCY_URL+"?sensor=hij&atInstant="+FlaskTest.current_datetime())
         self.assertEqual(r.status_code, 200)
         self.assertGreaterEqual(r.json()['inside'], 1)
+
+    def test_4_get_occupancy_false(self):
+        r = requests.get(FlaskTest.OCCUPANCY_URL+"?sensor=hij&atInstant=2020-10-10T20:20:20")
+        self.assertEqual(r.status_code, 200)
+        self.assertEqual(r.json()['inside'], False)
 
         
