@@ -1,6 +1,8 @@
 # Square Sense backend exercise Python Flask API + DB
 
-## Follow the following instructions to run the backend
+## Backend running on https://remi-square-backend.herokuapp.com/api
+
+## Follow instructions to run the app locally!
 
 ### Activate virtual environment
 
